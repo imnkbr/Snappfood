@@ -9,6 +9,9 @@ use App\Http\Controllers\admin\TypeOfRestaurantController;
 use App\Http\Controllers\restaurant\RestaurantController;
 use App\Http\Controllers\restaurant\SettingController;
 use App\Http\Controllers\restaurant\RestaurantTypeController;
+use App\Http\Controllers\restaurant\RestaurantWorkingHoursController;
+use App\Http\Controllers\restaurant\FoodController;
+use App\Http\Controllers\restaurant\CommentController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\RestaurantMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -67,8 +70,34 @@ Route::group(['middleware' => 'restaurant'],function (){
 
     Route::put('/restaurant/{name}/setting/status', [SettingController::class , 'restaurantStatus']);
 
-    Route::get('/restaurant/{name}/setting/type_of_restaurant' , [RestaurantTypeController::class , 'index']);
+    Route::get('/restaurant/{name}/setting/restaurant_type' , [RestaurantTypeController::class , 'index']);
 
+    Route::post('/restaurant/{name}/setting/restaurant_type' , [RestaurantTypeController::class , 'create']);
 
+    Route::delete('/restaurant/{name}/setting/restaurant_type/{id}' , [RestaurantTypeController::class , 'delete']);
+
+    Route::get('restaurant/{name}/setting/restaurant_working_hours',[RestaurantWorkingHoursController::class , 'index'])->name('restaurant.working_hours');
+
+    Route::post('restaurant/{name}/setting/restaurant_working_hours',[RestaurantWorkingHoursController::class , 'create']);
+
+    Route::get('restaurant/{name}/foods',[FoodController::class , 'index'])->name('restaurant.foods');
+
+    Route::get('restaurant/{name}/foods/foods_create',[FoodController::class , 'create']);
+
+    Route::post('restaurant/{name}/foods/foods_create',[FoodController::class , 'addFood']);
+
+    Route::get('/restaurant/{name}/foods/{id}',[FoodController::class , 'edit']);
+
+    Route::put('/restaurant/{name}/foods/{id}',[FoodController::class , 'update']);
+
+    Route::delete('/restaurant/{name}/foods/{id}' , [FoodController::class  , 'delete']);
+
+    Route::get('restaurant/{name}/comments' , [CommentController::class , 'index']);
+
+    Route::delete('restaurant/{name}/comments/{id}' , [CommentController::class , 'delete']);
+
+    Route::post('restaurant/{name}/comments/{id}' , [CommentController::class , 'response']);
+
+    Route::put('restaurant/{name}/comments/{id}' , [CommentController::class , 'confirm']);
 });
 

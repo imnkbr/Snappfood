@@ -21,36 +21,36 @@
         <form action="/restaurant/{{$restaurant->name}}/setting/complete_restaurant_details" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
-            <h3 class="text-white">Complete Restaurant Details:</h3>
+            <h3 class="text-white">Complete Restaurant Details</h3>
 
             <div class="mb-3">
-                <label for="name" class="form-label">Name:</label>
+                <label for="name" class="form-label text-white">Name:</label>
                 <input id="name" name="name" type="text" class="form-control" value="{{ $restaurant->name }}">
             </div>
 
             <div class="mb-3">
-                <label for="phone_number" class="form-label">Phone Number:</label>
+                <label for="phone_number" class="form-label text-white">Phone Number:</label>
                 <input id="phone_number" name="phone_number" type="number" class="form-control" value="{{ $restaurant->phone_number }}">
             </div>
 
             <div class="mb-3">
-                <label for="address" class="form-label">Address:</label>
+                <label for="address" class="form-label text-white">Address:</label>
                 <textarea id="address" name="address" class="form-control">{{$restaurant->address}}</textarea>
             </div>
 
             <div class="mb-3">
-                <label for="account_number" class="form-label">Account Number:</label>
+                <label for="account_number" class="form-label text-white">Account Number:</label>
                 <input id="account_number" name="account_number" type="number" class="form-control" value="{{ $restaurant->account_number }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
-        <h3 class="text-white mt-4 mb-2">Complete Restaurant Type & Working Hours Of Restaurant:</h3>
+        <h3 class="text-white mt-4 mb-2">Complete Restaurant Type & Working Hours Of Restaurant</h3>
 
         <div class="d-flex justify-content-evenly m-3">
-            <a href="/restaurant/{{$restaurant->name}}/setting/working_hours" class="btn btn-secondary text-white">Working Hours</a>
-            <a href="/restaurant/{{$restaurant->name}}/setting/type_of_restaurant" class="btn btn-secondary text-white">Type Of Restaurant</a>
+            <a href="/restaurant/{{$restaurant->name}}/setting/restaurant_working_hours" class="btn btn-secondary text-white">Working Hours</a>
+            <a href="/restaurant/{{$restaurant->name}}/setting/restaurant_type" class="btn btn-secondary text-white">Restaurant Type</a>
         </div>
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.restaurant')
 @section('content')
     <div class=" p-4 mb-4 text-center">
-        <h1 class="text-white">ORDERS:</h1>
+        <h1 class="text-white">ORDERS</h1>
     </div>
 
     <div class="container">

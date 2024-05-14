@@ -18,7 +18,7 @@ class RestaurantTypeController extends Controller
         $restaurant = Restaurant::where('name' , $name)->first();
         $typeOfRestaurants = TypeOfRestaurant::all();
 
-        return view('restaurant.type_of_restaurant')->with(['restaurant' => $restaurant ,'typeOfRestaurants' => $typeOfRestaurants]);
+        return view('restaurant.restaurant_type')->with(['restaurant' => $restaurant ,'typeOfRestaurants' => $typeOfRestaurants]);
     }
 
     public function create(string $name , Request $request)
@@ -29,6 +29,21 @@ class RestaurantTypeController extends Controller
             'types' => ['required',new TypeOfRestaurantRule]
         ]);
 
+        RestaurantType::create([
+            'type_of_restaurant_id' => $request->input('types'),
+            'restaurant_id' => $restaurant->id
+        ]);
+        return redirect()->back();
+
+    }
+
+    public function delete(string $name , int $id)
+    {
+        RestaurantType::where('id' , $id)->delete();
+
+        $restaurant = Restaurant::where('name' , $name)->first();
+
+        return redirect()->back();
     }
 
 }

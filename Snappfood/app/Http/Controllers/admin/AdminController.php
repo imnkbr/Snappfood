@@ -11,7 +11,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $comments = Comment::where('request_for_deleting' , true)->get();
+        $comments = Comment::where('request_for_deleting' , false)->get();
 
         return view('admin.home',[
             'comments' => $comments
