@@ -29,6 +29,8 @@ class CommentController extends Controller
         ->get();
         $restaurant = Restaurant::where('name' , $name)->first();
 
+        $this->authorize('commentDelete' , $restaurant);
+
         Comment::find($id)->update([
             'request_for_deleting' => true
         ]);
@@ -48,6 +50,8 @@ class CommentController extends Controller
 
         $restaurant = Restaurant::where('name' , $name)->first();
 
+        $this->authorize('commentUpdate' , $restaurant);
+
         Comment::find($id)->update([
             'response' => $request->input('response')
         ]);
@@ -65,6 +69,8 @@ class CommentController extends Controller
         ->get();
 
         $restaurant = Restaurant::where('name' , $name)->first();
+
+        $this->authorize('commentConfirm' , $restaurant);
 
         Comment::find($id)->update([
             'is_confirmed' => true

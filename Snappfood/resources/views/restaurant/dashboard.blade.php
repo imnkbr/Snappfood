@@ -19,6 +19,21 @@
                         <li class="mb-2">Sum Amount: {{$order->sum_amount}}</li>
                         <li class="mb-2">Status: {{$order->status}}</li>
                     </ul>
+                    @can('ordersUpdate' , $restaurant)
+                    <form action="/restaurant/{{$restaurant->name}}/{{$order->id}}" method="POST">
+                        @method('PUT')
+                        @csrf
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Change Status:</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="preparing">Preparing</option>
+                                <option value="send to destination">Send to destination</option>
+                                <option value="delivered">Delivered</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </form>
+                    @endcan
                 </div>
             @endif
         @endforeach

@@ -62,6 +62,7 @@ Route::group(['middleware' => 'admin'],function (){
 Route::group(['middleware' => 'restaurant'],function (){
 
     Route::get('/restaurant/{name}',[RestaurantController::class,'index'])->name('restaurant.dashboard');
+    Route::put('restaurant/{name}/{id}',[RestaurantController::class , 'ordersUpdate']);
     Route::post('admin/{name}/logout' , [RestaurantController::class , 'logout']);
 
     Route::get('/restaurant/{name}/setting', [SettingController::class , 'index'])->name('restaurant.setting');
@@ -91,6 +92,8 @@ Route::group(['middleware' => 'restaurant'],function (){
     Route::put('/restaurant/{name}/foods/{id}',[FoodController::class , 'update']);
 
     Route::delete('/restaurant/{name}/foods/{id}' , [FoodController::class  , 'delete']);
+
+    Route::get('/restaurant/{name}/foods/search', [FoodController::class, 'search'])->name('foods.search');
 
     Route::get('restaurant/{name}/comments' , [CommentController::class , 'index']);
 

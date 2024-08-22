@@ -6,7 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Snappfood</title>
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif" class="bg-dark">
+<body style="background-image: url({{asset('pictures/restaurant_background.jpg')}});
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, Helvetica, sans-serif" class="bg-dark">
 @if($restaurant->is_completed == false)
 <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
     <div class="container-fluid">

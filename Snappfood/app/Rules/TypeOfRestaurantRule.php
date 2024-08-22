@@ -8,6 +8,13 @@ use Illuminate\Contracts\Validation\ValidationRule;
 
 class TypeOfRestaurantRule implements ValidationRule
 {
+    private $restaurantTypes;
+
+    public function __construct()
+    {
+        $this->restaurantTypes = RestaurantType::all();
+    }
+
     /**
      * Run the validation rule.
      *
@@ -15,9 +22,12 @@ class TypeOfRestaurantRule implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if(RestaurantType::where('type_of_restaurant_id', $value)->exists() and RestaurantType::where('restaurant_id', auth()->user()->restaurant->id)->exists()){
-            $fail('you selected this type already');
+        foreach ($this->restaurantTypes as $restaurantType){
+            foreach ($value as $item) {
+                if ($item ==  $restaurantType->type_of_restaurant_id and auth()->user()->restaurant->id == $restaurantType->restaurant_id){
+                    $fail('you selected this type already');
+                }
+            }
         }
-
     }
 }

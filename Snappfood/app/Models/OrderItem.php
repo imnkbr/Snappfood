@@ -11,7 +11,13 @@ class OrderItem extends Model
 
     protected $table = 'order_items';
 
-    
+    protected $fillable = [
+        'quantity',
+        'order_id',
+        'food_id'
+    ];
+
+
     public function food()
     {
         return $this->belongsTo(Food::class);

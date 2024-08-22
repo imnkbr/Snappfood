@@ -7,9 +7,9 @@
 </div>
 
 
-<form action="/restaurant/{{$restaurant->name}}/foods" method="POST" enctype="multipart/form-data">
+<form action="/restaurant/{{$restaurant->name}}/foods/foods_create" method="POST" enctype="multipart/form-data">
     @csrf
-    @method('POST')
+
     <div class="mb-3 mt-3">
         <label class="form-label text-white">Food Name:</label>
         <input type="text" class="form-control" name="name">

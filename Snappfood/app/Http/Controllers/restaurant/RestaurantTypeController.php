@@ -25,14 +25,18 @@ class RestaurantTypeController extends Controller
     {
         $restaurant = Restaurant::where('name' , $name)->first();
 
+        $this->authorize('setting' , $restaurant);
+
         $request->validate([
             'types' => ['required',new TypeOfRestaurantRule]
         ]);
 
-        RestaurantType::create([
-            'type_of_restaurant_id' => $request->input('types'),
-            'restaurant_id' => $restaurant->id
-        ]);
+        foreach($request->input('types') as $type ){
+            RestaurantType::create([
+                'type_of_restaurant_id' => $type,
+                'restaurant_id' => $restaurant->id
+            ]);
+        };
         return redirect()->back();
 
     }

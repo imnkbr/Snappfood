@@ -10,7 +10,7 @@
             @foreach($typeOfRestaurants as $typeOfRestaurant)
                 <div class="form-group">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="exampleCheckbox" name="types" value="{{$typeOfRestaurant->id}}">
+                        <input class="form-check-input" type="checkbox" id="exampleCheckbox" name="types[]" value="{{$typeOfRestaurant->id}}">
 
                         <label class="form-check-label text-white" for="exampleCheckbox">
                             <strong>{{$typeOfRestaurant->type}}</strong>

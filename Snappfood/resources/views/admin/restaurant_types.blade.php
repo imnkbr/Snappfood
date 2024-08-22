@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
     <div class="container mt-4">
-        <h2 class="text-center mt-3">RESTAURANT TYPES:</h2>
+        <h2 class="text-center mt-3 text-white">RESTAURANT TYPES:</h2>
     </div>
     @foreach($types as $type)
         <div class="container mt-4">
@@ -25,7 +25,7 @@
             @endforeach
             <div class="col-md-6">
                 <div class="col-12 mt-3">
-                    <h4>Add new restaurant type:</h4>
+                    <h4 class="text-white">Add new restaurant type:</h4>
                     <form action="/admin/restaurant_types" method="POST">
                         @csrf
                         <input  type="text" name="type">
